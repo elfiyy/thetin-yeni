@@ -265,8 +265,8 @@
 
         <div class="links-container">
 
-            <!-- Kick -->
-            <a href="https://kick.com/thetin" data-app="kick://channel/thetin" data-intent="intent://channel/thetin#Intent;scheme=kick;package=com.kick.app;S.browser_fallback_url=https://kick.com/thetin;end" class="link-item app-link">
+            <!-- Kick (Mobil App Link & Web Uyumlu) -->
+            <a href="https://kick.com/thetin" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
 
@@ -280,8 +280,8 @@
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@thetinonair" data-app="snssdk1180://user/profile/thetinonair" data-intent="intent://user/profile/thetinonair#Intent;scheme=snssdk1180;package=com.zhiliaoapp.musically;S.browser_fallback_url=https://www.tiktok.com/@thetinonair;end" class="link-item app-link">
+            <!-- TikTok (Mobil App Link & Web Uyumlu) -->
+            <a href="https://www.tiktok.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
 
@@ -294,24 +294,18 @@
         Design by elwinna
     </a>
 
-    <!-- Uygulama Tetikleme Scripti -->
+    <!-- Uygulama Yönlendirme Scripti -->
     <script>
         document.querySelectorAll('.app-link').forEach(function(element) {
             element.addEventListener('click', function(e) {
                 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                var isAndroid = /Android/i.test(navigator.userAgent);
                 
                 if (isMobile) {
                     e.preventDefault();
                     var webUrl = this.getAttribute('href');
                     var appUrl = this.getAttribute('data-app');
-                    var intentUrl = this.getAttribute('data-intent');
 
-                    if (isAndroid && intentUrl) {
-                        // Android cihazlarda doğrudan Intent ile uygulamadaki profil açılır
-                        window.location.href = intentUrl;
-                    } else if (appUrl) {
-                        // iOS cihazlarda özel Deeplink ile doğrudan profil açılır
+                    if (appUrl) {
                         window.location.href = appUrl;
                         setTimeout(function() {
                             window.location.href = webUrl;
