@@ -265,23 +265,23 @@
 
         <div class="links-container">
 
-            <!-- Kick (Özel Profil Intent & Deep Link) -->
-            <a href="https://kick.com/thetin" onclick="openKick(event, 'https://kick.com/thetin');" class="link-item">
+            <!-- Kick -->
+            <a href="https://kick.com/thetin" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
 
             <!-- Twitch -->
-            <a href="https://twitch.tv/thetinonair" onclick="openApp(event, 'twitch://stream/thetinonair', 'https://twitch.tv/thetinonair');" class="link-item">
+            <a href="https://twitch.tv/thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-twitch"></i> Twitch Kanalım
             </a>
 
             <!-- Instagram -->
-            <a href="https://www.instagram.com/thetinonair/" onclick="openApp(event, 'instagram://user?username=thetinonair', 'https://www.instagram.com/thetinonair/');" class="link-item">
+            <a href="https://www.instagram.com/thetinonair/" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
-            <!-- TikTok (Özel Profil Intent & Deep Link) -->
-            <a href="https://www.tiktok.com/@thetinonair" onclick="openTikTok(event, 'https://www.tiktok.com/@thetinonair');" class="link-item">
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
 
@@ -293,57 +293,6 @@
     <a href="https://bionluk.com/elwinna" target="_blank" rel="noopener noreferrer" class="developer-footer">
         Design by elwinna
     </a>
-
-    <!-- Profil Yönlendirme Scripti -->
-    <script>
-        // TikTok Profil Yönlendirmesi
-        function openTikTok(e, webUrl) {
-            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile) {
-                e.preventDefault();
-                if (/Android/i.test(navigator.userAgent)) {
-                    // Android için doğrudan kullanıcının profiline yönlendiren Intent
-                    window.location.href = "intent://user/profile/thetinonair#Intent;scheme=snssdk1180;package=com.zhiliaoapp.musically;S.browser_fallback_url=" + encodeURIComponent(webUrl) + ";end";
-                } else {
-                    // iOS için direkt TikTok profil adresi
-                    window.location.href = "snssdk1180://user/profile/thetinonair";
-                    setTimeout(function() {
-                        window.location.href = webUrl;
-                    }, 1250);
-                }
-            }
-        }
-
-        // Kick Profil Yönlendirmesi
-        function openKick(e, webUrl) {
-            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile) {
-                e.preventDefault();
-                if (/Android/i.test(navigator.userAgent)) {
-                    // Android Kick uygulaması profil yönlendirmesi
-                    window.location.href = "intent://channel/thetin#Intent;scheme=kick;package=com.kick.app;S.browser_fallback_url=" + encodeURIComponent(webUrl) + ";end";
-                } else {
-                    // iOS Kick uygulaması yönlendirmesi
-                    window.location.href = "kick://channel/thetin";
-                    setTimeout(function() {
-                        window.location.href = webUrl;
-                    }, 1250);
-                }
-            }
-        }
-
-        // Genel Sosyal Medya Yönlendirmesi (Twitch, Instagram)
-        function openApp(e, appUrl, webUrl) {
-            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile) {
-                e.preventDefault();
-                window.location.href = appUrl;
-                setTimeout(function() {
-                    window.location.href = webUrl;
-                }, 1250);
-            }
-        }
-    </script>
 
 </body>
 </html>
