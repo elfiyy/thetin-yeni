@@ -46,7 +46,6 @@
             height: 200%;
             background-image: linear-gradient(rgba(220, 38, 38, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
-            /* Arka plandaki grid çizgilerini 3D perspektife sokar ve hareket ettirir */
             transform: perspective(500px) rotateX(60deg);
             animation: gridScroll 12s linear infinite;
             z-index: -2;
@@ -91,7 +90,7 @@
             height: 120px;
             width: 120px;
             object-fit: cover;
-            border-radius: 50%; /* Tam yuvarlak yapar */
+            border-radius: 50%;
             border: 4px solid #dc2626;
             background-color: #161616;
             box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
@@ -266,18 +265,22 @@
 
         <div class="links-container">
 
-            <a href="https://kick.com/thetin" onclick="openApp(event, 'kick://channel/thetin', 'https://kick.com/thetin');" class="link-item">
+            <!-- Kick (Özel Profil Intent & Deep Link) -->
+            <a href="https://kick.com/thetin" onclick="openKick(event, 'https://kick.com/thetin');" class="link-item">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
 
+            <!-- Twitch -->
             <a href="https://twitch.tv/thetinonair" onclick="openApp(event, 'twitch://stream/thetinonair', 'https://twitch.tv/thetinonair');" class="link-item">
                 <i class="fa-brands fa-twitch"></i> Twitch Kanalım
             </a>
 
+            <!-- Instagram -->
             <a href="https://www.instagram.com/thetinonair/" onclick="openApp(event, 'instagram://user?username=thetinonair', 'https://www.instagram.com/thetinonair/');" class="link-item">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
+            <!-- TikTok (Özel Profil Intent & Deep Link) -->
             <a href="https://www.tiktok.com/@thetinonair" onclick="openTikTok(event, 'https://www.tiktok.com/@thetinonair');" class="link-item">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
@@ -291,35 +294,53 @@
         Design by elwinna
     </a>
 
-    <!-- Gelişmiş Mobil Yönlendirme Scripti -->
+    <!-- Profil Yönlendirme Scripti -->
     <script>
+        // TikTok Profil Yönlendirmesi
         function openTikTok(e, webUrl) {
             var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
             if (isMobile) {
                 e.preventDefault();
                 if (/Android/i.test(navigator.userAgent)) {
-                    // Android Intent yönlendirmesi (Doğrudan TikTok uygulamasını açar)
+                    // Android için doğrudan kullanıcının profiline yönlendiren Intent
                     window.location.href = "intent://user/profile/thetinonair#Intent;scheme=snssdk1180;package=com.zhiliaoapp.musically;S.browser_fallback_url=" + encodeURIComponent(webUrl) + ";end";
                 } else {
-                    // iOS Deep Link yönlendirmesi
+                    // iOS için direkt TikTok profil adresi
                     window.location.href = "snssdk1180://user/profile/thetinonair";
                     setTimeout(function() {
                         window.location.href = webUrl;
-                    }, 1200);
+                    }, 1250);
                 }
             }
         }
 
+        // Kick Profil Yönlendirmesi
+        function openKick(e, webUrl) {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (isMobile) {
+                e.preventDefault();
+                if (/Android/i.test(navigator.userAgent)) {
+                    // Android Kick uygulaması profil yönlendirmesi
+                    window.location.href = "intent://channel/thetin#Intent;scheme=kick;package=com.kick.app;S.browser_fallback_url=" + encodeURIComponent(webUrl) + ";end";
+                } else {
+                    // iOS Kick uygulaması yönlendirmesi
+                    window.location.href = "kick://channel/thetin";
+                    setTimeout(function() {
+                        window.location.href = webUrl;
+                    }, 1250);
+                }
+            }
+        }
+
+        // Genel Sosyal Medya Yönlendirmesi (Twitch, Instagram)
         function openApp(e, appUrl, webUrl) {
             var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
             if (isMobile) {
                 e.preventDefault();
                 window.location.href = appUrl;
                 setTimeout(function() {
                     window.location.href = webUrl;
-                }, 1000);
+                }, 1250);
             }
         }
     </script>
