@@ -270,28 +270,28 @@
 
         <div class="links-container">
 
-            <!-- Kick (Anında Tepki & Uygulama/Web Entegrasyonu) -->
-            <a href="https://kick.com/thetin" target="_blank" rel="noopener noreferrer" class="link-item">
+            <!-- Kick -->
+            <a href="https://kick.com/thetin" data-app="kick://channel/thetin" class="link-item smart-app-link">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
 
             <!-- Twitch -->
-            <a href="https://twitch.tv/thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
+            <a href="https://twitch.tv/thetinonair" data-app="twitch://stream/thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-twitch"></i> Twitch Kanalım
             </a>
 
             <!-- YouTube -->
-            <a href="https://www.youtube.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
+            <a href="https://www.youtube.com/@thetinonair" data-app="vnd.youtube://www.youtube.com/@thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-youtube"></i> YouTube Kanalı
             </a>
 
             <!-- Instagram -->
-            <a href="https://www.instagram.com/thetinonair/" target="_blank" rel="noopener noreferrer" class="link-item">
+            <a href="https://www.instagram.com/thetinonair/" data-app="instagram://user?username=thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
-            <!-- TikTok (Anında Tepki & Uygulama/Web Entegrasyonu) -->
-            <a href="https://www.tiktok.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@thetinonair" data-app="snssdk1180://user/profile/thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
 
@@ -303,6 +303,33 @@
     <a href="https://bionluk.com/elwinna" target="_blank" rel="noopener noreferrer" class="developer-footer">
         Design by elwinna
     </a>
+
+    <!-- Gecikmesiz Yönlendirme Betiği -->
+    <script>
+        document.querySelectorAll('.smart-app-link').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                if (isMobile) {
+                    e.preventDefault();
+                    var webUrl = this.getAttribute('href');
+                    var appUrl = this.getAttribute('data-app');
+                    
+                    // Görsel dokunma efektini anında göster
+                    this.style.transform = "translate(2px, 2px)";
+                    
+                    var start = Date.now();
+                    window.location.href = appUrl;
+                    
+                    // Uygulama açılmazsa web sitesine yönlendir
+                    setTimeout(function() {
+                        if (Date.now() - start < 1500) {
+                            window.location.href = webUrl;
+                        }
+                    }, 800);
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
