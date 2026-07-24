@@ -270,7 +270,7 @@
 
         <div class="links-container">
 
-            <!-- Kick -->
+            <!-- Kick (Anında Tepki & Uygulama/Web Entegrasyonu) -->
             <a href="https://kick.com/thetin" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
@@ -290,7 +290,7 @@
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
-            <!-- TikTok -->
+            <!-- TikTok (Anında Tepki & Uygulama/Web Entegrasyonu) -->
             <a href="https://www.tiktok.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
@@ -303,68 +303,6 @@
     <a href="https://bionluk.com/elwinna" target="_blank" rel="noopener noreferrer" class="developer-footer">
         Design by elwinna
     </a>
-
-    <!-- Mobil Uygulama Yönlendirme Scripti -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Sadece mobil cihazlarda (iOS/Android) çalışır, masaüstünü etkilemez
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-            document.querySelectorAll('.link-item').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Varsayılan tarayıcı davranışını geçici olarak durdur
-                    const webUrl = this.getAttribute('href');
-                    
-                    try {
-                        // URL'den kullanıcı adını temizleyerek çek (örn: @thetinonair -> thetinonair)
-                        const urlObj = new URL(webUrl);
-                        const username = urlObj.pathname.split('/').filter(Boolean).pop().replace('@', '');
-                        let appUrl = webUrl;
-                        
-                        // Platform bazlı derin bağlantı (deep link) şemaları
-                        if (webUrl.includes('kick.com')) {
-                            appUrl = `kick://channel/${username}`;
-                        } else if (webUrl.includes('twitch.tv')) {
-                            appUrl = `twitch://user/${username}`;
-                        } else if (webUrl.includes('youtube.com')) {
-                            appUrl = `youtube://@${username}`;
-                        } else if (webUrl.includes('instagram.com')) {
-                            appUrl = `instagram://user?username=${username}`;
-                        } else if (webUrl.includes('tiktok.com')) {
-                            appUrl = `tiktok://user/profile/${username}`;
-                        }
-
-                        // 1. Önce telefonundaki ilgili uygulamayı açmayı dene
-                        window.location.href = appUrl;
-                        
-                        // 2. Eğer uygulama yüklü değilse, 1.5 saniye sonra normal web tarayıcısına yönlendir
-                        let appOpened = false;
-                        const checkAppOpened = () => {
-                            if (document.hidden) {
-                                appOpened = true; // Uygulama açıldıysa sayfa arka plana gider
-                            }
-                        };
-                        
-                        document.addEventListener('visibilitychange', checkAppOpened);
-                        
-                        setTimeout(() => {
-                            document.removeEventListener('visibilitychange', checkAppOpened);
-                            // Eğer sayfa hala görünürse (uygulama açılmadıysa), web linkine git
-                            if (!appOpened && document.visibilityState === 'visible') {
-                                window.location.href = webUrl;
-                            }
-                        }, 1500);
-                        
-                    } catch (err) {
-                        // Herhangi bir beklenmedik hata olursa direkt web linkine yönlendir
-                        window.location.href = webUrl;
-                    }
-                });
-            });
-        }
-    });
-    </script>
 
 </body>
 </html>
