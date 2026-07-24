@@ -151,9 +151,10 @@
             border: 2px solid #2d2d3d;
             padding: 15px 12px;
             box-shadow: 4px 4px 0px #000000;
-            transition: all 0.2s ease-in-out;
+            transition: transform 0.1s ease, background-color 0.2s ease;
             border-radius: 8px;
             cursor: pointer;
+            touch-action: manipulation; /* Dokunma gecikmesini sıfırlar */
         }
 
         /* Masaüstü Hover */
@@ -167,7 +168,7 @@
             }
         }
 
-        /* Mobil Dokunma */
+        /* Mobil Anında Dokunma Tepkisi */
         .link-item:active {
             transform: translate(2px, 2px);
             box-shadow: 2px 2px 0px #000000;
@@ -269,28 +270,28 @@
 
         <div class="links-container">
 
-            <!-- Kick (Mobil App Link & Web Uyumlu) -->
+            <!-- Kick (Anında Tepki & Uygulama/Web Entegrasyonu) -->
             <a href="https://kick.com/thetin" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
 
             <!-- Twitch -->
-            <a href="https://twitch.tv/thetinonair" data-app="twitch://stream/thetinonair" class="link-item app-link">
+            <a href="https://twitch.tv/thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-twitch"></i> Twitch Kanalım
             </a>
 
             <!-- YouTube -->
-            <a href="https://www.youtube.com/@thetinonair" data-app="vnd.youtube://www.youtube.com/@thetinonair" class="link-item app-link">
+            <a href="https://www.youtube.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-youtube"></i> YouTube Kanalı
             </a>
 
             <!-- Instagram -->
-            <a href="https://www.instagram.com/thetinonair/" data-app="instagram://user?username=thetinonair" class="link-item app-link">
+            <a href="https://www.instagram.com/thetinonair/" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
-            <!-- TikTok (Doğrudan Uygulama İçi Profil Tetikleme) -->
-            <a href="https://www.tiktok.com/@thetinonair" data-app="snssdk1180://user/profile/thetinonair" class="link-item app-link">
+            <!-- TikTok (Anında Tepki & Uygulama/Web Entegrasyonu) -->
+            <a href="https://www.tiktok.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
 
@@ -302,30 +303,6 @@
     <a href="https://bionluk.com/elwinna" target="_blank" rel="noopener noreferrer" class="developer-footer">
         Design by elwinna
     </a>
-
-    <!-- Uygulama Yönlendirme Scripti -->
-    <script>
-        document.querySelectorAll('.app-link').forEach(function(element) {
-            element.addEventListener('click', function(e) {
-                var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                
-                if (isMobile) {
-                    e.preventDefault();
-                    var webUrl = this.getAttribute('href');
-                    var appUrl = this.getAttribute('data-app');
-
-                    if (appUrl) {
-                        window.location.href = appUrl;
-                        setTimeout(function() {
-                            window.location.href = webUrl;
-                        }, 1250);
-                    } else {
-                        window.location.href = webUrl;
-                    }
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
