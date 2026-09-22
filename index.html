@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>THEtin On Air 🎸 Rock & Gamer World</title>
 
-    <!-- Piksel Yazı Tipi -->
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <!-- İkonlar -->
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Kesin Mobil Reset */
+       
         * {
             box-sizing: border-box;
             margin: 0;
@@ -36,7 +36,7 @@
             overflow-x: hidden;
         }
 
-        /* --- DİNAMİK/HAREKETLİ RETRO ARKA PLAN --- */
+        
         body::before {
             content: "";
             position: fixed;
@@ -51,7 +51,7 @@
             z-index: -2;
         }
 
-        /* Arka plandaki derinlik ve parlamalar */
+        
         body::after {
             content: "";
             position: fixed;
@@ -64,7 +64,7 @@
             z-index: -1;
         }
 
-        /* --- PREMIUM KART --- */
+        
         .card-container {
             background-color: rgba(22, 22, 26, 0.95);
             border: 3px solid #dc2626;
@@ -78,7 +78,7 @@
             backdrop-filter: blur(4px);
         }
 
-        /* --- PROFESYONEL YUVARLAK LOGO --- */
+      
         .pixel-art-header {
             display: flex;
             justify-content: center;
@@ -154,10 +154,10 @@
             transition: transform 0.1s ease, background-color 0.2s ease;
             border-radius: 8px;
             cursor: pointer;
-            touch-action: manipulation; /* Dokunma gecikmesini sıfırlar */
+            touch-action: manipulation; 
         }
 
-        /* Masaüstü Hover */
+        
         @media (hover: hover) {
             .link-item:hover {
                 background-color: #dc2626;
@@ -168,7 +168,7 @@
             }
         }
 
-        /* Mobil Anında Dokunma Tepkisi */
+        
         .link-item:active {
             transform: translate(2px, 2px);
             box-shadow: 2px 2px 0px #000000;
@@ -179,7 +179,7 @@
             font-size: 18px;
         }
 
-        /* İkon Renkleri */
+        
         .fa-kickstarter {
             color: #53fc18;
         }
@@ -200,7 +200,7 @@
             color: #00f2fe;
         }
 
-        /* Animasyonlar */
+       
         @keyframes gridScroll {
             from {
                 background-position: 0 0;
@@ -270,27 +270,27 @@
 
         <div class="links-container">
 
-            <!-- Kick (Sorunsuz Universal Link Yönlendirmesi) -->
+            
             <a href="https://kick.com/thetin" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-kickstarter"></i> Kick Canlı Yayın
             </a>
 
-            <!-- Twitch -->
+           
             <a href="https://twitch.tv/thetinonair" data-app="twitch://stream/thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-twitch"></i> Twitch Kanalım
             </a>
 
-            <!-- YouTube -->
+           
             <a href="https://www.youtube.com/@thetinonair" data-app="vnd.youtube://www.youtube.com/@thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-youtube"></i> YouTube Kanalı
             </a>
 
-            <!-- Instagram -->
+           
             <a href="https://www.instagram.com/thetinonair/" data-app="instagram://user?username=thetinonair" class="link-item smart-app-link">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
 
-            <!-- TikTok (Sorunsuz Universal Link Yönlendirmesi) -->
+            
             <a href="https://www.tiktok.com/@thetinonair" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fa-brands fa-tiktok"></i> TikTok Videoları
             </a>
@@ -299,12 +299,12 @@
 
     </div>
 
-    <!-- Tıklanabilir Bionluk Linkin -->
+    
     <a href="https://bionluk.com/elwinna" target="_blank" rel="noopener noreferrer" class="developer-footer">
         Design by elwinna
     </a>
 
-    <!-- Gecikmesiz Yönlendirme Betiği -->
+   
     <script>
         document.querySelectorAll('.smart-app-link').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
